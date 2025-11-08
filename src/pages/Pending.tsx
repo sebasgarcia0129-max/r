@@ -1,87 +1,81 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Mail, Clock } from "lucide-react";
+import { Mail, Clock, Home } from 'lucide-react';
 
-export default function Pending() {
-  const navigate = useNavigate();
+interface PendingProps {
+  onBackToHome: () => void;
+}
 
+export default function Pending({ onBackToHome }: PendingProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cyan-50 to-white">
-      {/* Navigation */}
-      <nav className="bg-white border-b border-border py-4 px-6">
-        <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">M</span>
-          </div>
-          <span className="text-lg font-semibold text-foreground">ManoComigos</span>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white">
+      <div className="p-4">
+        <button
+          onClick={onBackToHome}
+          className="flex items-center gap-2 text-gray-600 hover:text-gray-800 text-sm"
+        >
+          <Home className="w-4 h-4" />
+          Volver al inicio
+        </button>
+      </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               Tu cuenta está en
-              <span className="text-primary block mt-1">estado pendiente</span>
+              <span className="block mt-1" style={{ color: '#7ECBF2' }}>estado pendiente</span>
             </h1>
 
-            <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
+            <p className="text-gray-600 mb-8 leading-relaxed text-lg">
               Tu documento de identidad se encuentra en proceso de verificación. Este paso es importante para garantizar la seguridad de nuestra plataforma.
             </p>
 
-            {/* Info Box */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border border-primary/20 rounded-xl p-6 mb-8 shadow-sm">
+            <div className="rounded-xl p-6 mb-8 shadow-sm" style={{ background: 'linear-gradient(to bottom right, #E8F4F8, #F0F9FC)', border: '1px solid #7ECBF2' }}>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#E8F4F8' }}>
+                  <Mail className="w-6 h-6" style={{ color: '#7ECBF2' }} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">¿Qué sucede ahora?</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Estamos verificando tu documento de identidad. Una vez que la verificación esté completa, 
-                    recibirás un <span className="font-semibold text-foreground">correo electrónico de confirmación</span> y 
+                  <h3 className="font-semibold text-gray-900 mb-2">¿Qué sucede ahora?</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Estamos verificando tu documento de identidad. Una vez que la verificación esté completa,
+                    recibirás un <span className="font-semibold text-gray-900">correo electrónico de confirmación</span> y
                     podrás acceder a todas las funcionalidades de la plataforma.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Time estimate */}
-            <div className="flex items-center gap-3 mb-8 text-sm text-muted-foreground">
-              <Clock className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-3 mb-8 text-sm text-gray-600">
+              <Clock className="w-5 h-5" style={{ color: '#7ECBF2' }} />
               <span>Este proceso suele tomar entre 24 y 48 horas</span>
             </div>
 
-            {/* Button */}
             <div className="flex gap-3">
-              <Button
-                onClick={() => navigate("/")}
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all"
+              <button
+                onClick={onBackToHome}
+                className="px-8 py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md text-sm"
+                style={{ backgroundColor: '#0A2540' }}
               >
-                Volver
-              </Button>
+                Volver al inicio
+              </button>
             </div>
 
-            <p className="text-xs text-muted-foreground mt-6">
-              ¿Tienes dudas?{" "}
-              <a href="mailto:support@manocomigos.com" className="text-primary hover:underline font-semibold">
+            <p className="text-xs text-gray-500 mt-6">
+              ¿Tienes dudas?{' '}
+              <a href="mailto:soporte@manosamigas.com" className="hover:underline font-semibold" style={{ color: '#7ECBF2' }}>
                 Contacta con soporte
               </a>
             </p>
           </div>
 
-          {/* Right Visual */}
           <div className="hidden md:block">
-            <div className="relative bg-gradient-to-br from-cyan-100 via-blue-100 to-cyan-50 rounded-2xl overflow-hidden shadow-xl aspect-square flex items-center justify-center p-8">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-square flex items-center justify-center p-8" style={{ background: 'linear-gradient(to bottom right, #7ECBF2, #A8D8EA)' }}>
               <div className="text-center">
                 <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <svg
-                    className="w-16 h-16 text-primary animate-pulse"
+                    className="w-16 h-16 animate-pulse"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="#7ECBF2"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -92,8 +86,8 @@ export default function Pending() {
                     />
                   </svg>
                 </div>
-                <p className="text-primary font-semibold text-xl mb-2">Verificación en proceso</p>
-                <p className="text-foreground/70 text-base">Tu seguridad es nuestra prioridad</p>
+                <p className="text-white font-semibold text-xl mb-2">Verificación en proceso</p>
+                <p className="text-white opacity-90 text-base">Tu seguridad es nuestra prioridad</p>
               </div>
             </div>
           </div>
